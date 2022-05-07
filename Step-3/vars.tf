@@ -29,3 +29,7 @@ variable "INSTANCE_DEVICE_NAME" {
 
 variable "RDS_PASSWORD" {
 }
+
+data "aws_availability_zones" "azs" {
+  all_availability_zones = true
+}
