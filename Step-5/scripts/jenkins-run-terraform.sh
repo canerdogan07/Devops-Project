@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ex
 AWS_REGION="eu-central-1"
-cd jenkins-packer-demo
+cd Step-5
 S3_BUCKET=`aws s3 ls --region $AWS_REGION |grep canerdogan-devops-project |tail -n1 |cut -d ' ' -f3`
 sed -i 's/canerdogan-devops-project/'${S3_BUCKET}'/' backend.tf
 sed -i 's/#//g' backend.tf
