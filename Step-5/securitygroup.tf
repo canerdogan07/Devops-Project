@@ -13,13 +13,13 @@ resource "aws_security_group" "jenkins-securitygroup" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["176.232.60.16/32"]
+    cidr_blocks = ["78.190.177.179/32"]
   }
   ingress {
     from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
-    cidr_blocks = ["176.232.60.16/32"]
+    cidr_blocks = ["78.190.177.179/32"]
   }
   tags = {
     Name = "jenkins-securitygroup"
@@ -41,13 +41,13 @@ resource "aws_security_group" "app-securitygroup" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["176.232.60.16/32"]
+    cidr_blocks = ["78.190.177.179/32"]
   }
   ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["176.232.60.16/32"]
+    cidr_blocks = ["78.190.177.179/32"]
   }
   tags = {
     Name = "app-securitygroup"
