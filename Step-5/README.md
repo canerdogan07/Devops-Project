@@ -1,16 +1,18 @@
-# Jenkins packer demo build
-```
-ARTIFACT=`packer build -machine-readable packer-demo.json |awk -F, '$0 ~/artifact,0,id/ {print $6}'`
-AMI_ID=`echo $ARTIFACT | cut -d ':' -f2`
-echo 'variable "APP_INSTANCE_AMI" { default = "'${AMI_ID}'" }' > amivar.tf
-aws s3 cp amivar.tf s3://terraform-state-a2b62lf/amivar.tf
-```
+This projects aim is to create an app using jenkins.
 
-# Jenkins terraform build
-```
-cd jenkins-packer-demo
-aws s3 cp s3://terraform-state-a2b62lf/amivar amivar.tf
-touch mykey
-touch mykey.pub
-terraform apply -auto-approve -var APP_INSTANCE_COUNT=1 -target aws_instance.app-instance
-```
+Terraform init>Terraform apply
+
+Create s3 bucket. 
+
+Create an instance with jenkins, python, terraform and packer installed.
+
+SSH into jenkins instace. Take the passwords an curl into jenkins website using port :8080 tag.
+
+Create a job for jenkins which will first install the packer, then install the app for packer(nginx-nodejs installed) to create an AMI with app installed. The app will push output Hello World!. Push the created AMI to s3 bucket with tag amivar.tf
+
+Push the .tfstate from local terraform into s3 bucket using with uncommenting the backend.tf using terraform init.
+
+When you have amivar.tf file from packer and .tfstate pushed into your s3 bucket, create a new job for jenkins to create an app instance. The jenkins will create the instance with terraform init>terraform apply using .tfstate file from s3 bucket.
+
+Curl into app instance IP which outputs Hello World!.
+

@@ -1,4 +1,3 @@
-# scale up alarm
 
 resource "aws_autoscaling_policy" "cpu-policy" {
   name                   = "example-cpu-policy"
@@ -28,7 +27,6 @@ resource "aws_cloudwatch_metric_alarm" "cpu-alarm" {
   alarm_actions   = [aws_autoscaling_policy.cpu-policy.arn]
 }
 
-# scale down alarm
 resource "aws_autoscaling_policy" "scaledown" {
   name                   = "example-cpu-policy-scaledown"
   autoscaling_group_name = aws_autoscaling_group.autoscaling.name
