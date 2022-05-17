@@ -1,10 +1,10 @@
 
 resource "aws_ecs_task_definition" "myapp-task-definition" {
-  family                = "myapp"
-  container_definitions = templatefile("templates/app.json.tpl",{
-  REPOSITORY_URL        = replace(aws_ecr_repository.myapp.repository_url, "https://", "")
-  APP_VERSION           = var.MYAPP_VERSION
-})
+  family = "myapp"
+  container_definitions = templatefile("templates/app.json.tpl", {
+    REPOSITORY_URL = replace(aws_ecr_repository.myapp.repository_url, "https://", "")
+    APP_VERSION    = var.MYAPP_VERSION
+  })
 }
 
 resource "aws_elb" "myapp-elb" {
@@ -39,6 +39,7 @@ resource "aws_elb" "myapp-elb" {
 }
 
 resource "aws_ecs_service" "myapp-service" {
+  count           = var.MYAPP_SERVICE_ENABLE
   name            = "myapp"
   cluster         = aws_ecs_cluster.example-cluster.id
   task_definition = aws_ecs_task_definition.myapp-task-definition.arn
@@ -55,4 +56,3 @@ resource "aws_ecs_service" "myapp-service" {
     ignore_changes = [task_definition]
   }
 }
-
