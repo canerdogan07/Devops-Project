@@ -5,7 +5,7 @@ data "aws_ami" "eks-worker" {
   }
 
   most_recent = true
-  owners      = ["602401143452"] # Amazon
+  owners      = ["602401143452"]
 }
 locals {
   demo-node-userdata = <<USERDATA
