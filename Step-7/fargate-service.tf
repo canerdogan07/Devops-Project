@@ -75,7 +75,6 @@ resource "aws_ecs_service" "demo" {
   }
 }
 
-# security group
 resource "aws_security_group" "ecs-demo" {
   name        = "ECS demo"
   vpc_id      = module.vpc.vpc_id
