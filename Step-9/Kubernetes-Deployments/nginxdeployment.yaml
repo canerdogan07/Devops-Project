@@ -3,9 +3,10 @@ kind: Deployment
 metadata:
   labels:
     environment: test
-  name: testdeploy
+  name: nginx
 spec:
   replicas: 3
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       environment: test
@@ -21,5 +22,30 @@ spec:
         environment: test
     spec:
       containers:
-      - image: nginx:1.17
+      - image: nginx:1.21
         name: nginx
+        ports:
+        - name: nginx-port
+          containerPort: 3000
+        env:
+          - name: SECRET_USERNAME
+            valueFrom:
+              secretKeyRef:
+                key: username
+                name: db-secrets
+          - name: SECRET_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: db-secrets
+        livenessProbe:
+          httpGet:
+            path: /live
+            port: 3000
+          initialDelaySeconds: 15
+          timeoutSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 3000
+          initialDelaySeconds: 15
