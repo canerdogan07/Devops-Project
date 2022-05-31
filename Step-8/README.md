@@ -7,13 +7,12 @@
 -Attach user data to the worker nodes to enable them to join the cluster using bootstrap.sh.
 
 -When terraform apply is done, pass the ***kubeconfig*** file to local system to reach the cluster API.
-'''
+```
     terraform output -raw kubeconfig > ~/user/kube/config
-'''
+```
 
 -Apply config-map-aws-auth to **authenticate** the nodes to the cluster.
-'''
+```
     terraform output -raw config-map-aws-auth > step-8/aws-auth-confing.yaml
     kubectl apply -f step-8/aws-auth-confing.yaml
-'''
-
+```
