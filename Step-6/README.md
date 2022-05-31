@@ -1,4 +1,4 @@
-##In this project, the aim is to create an ECS cluster using jenkins an run our app in it.
+## In this project, the aim is to create an ECS cluster using jenkins an run our app in it.
 
 1)First, we run terraform apply to create an ***ecs cluster*** and instance which includes *docker*, *terraform* and *jenkins* in it.
 '''
@@ -14,7 +14,7 @@ We do ssh to jenkins and install necessary plug-ins.
 
 You need to pass the AWS credentials to Jenkins instance via SSH for the terraform to work on AWS.
 
-###First job details would be having the shell script;
+### First job details would be having the shell script;
 '''
 Docker build -t appname .
 aws ecr get-login-password
@@ -22,7 +22,7 @@ docker push xxxx.awsamazon.com
 '''
 will be triggering the 2nd job when it is done.
 
-###2nd job shell script would be using;
+### 2nd job shell script would be using;
 '''
 creating key pairs
 terraform init

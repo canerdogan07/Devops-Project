@@ -1,4 +1,4 @@
-##This projects aim is to show a **CI/CD** process in AWS using **CodePipeline** and its services **CodeCommit**, **CodeBuild** and **CodeDeploy**.
+## This projects aim is to show a **CI/CD** process in AWS using **CodePipeline** and its services **CodeCommit**, **CodeBuild** and **CodeDeploy**.
 
 *The deployment gets commited to Codecommit repository via git push command which first triggers Codebuild via *docker build*. Accordingly, dockerized image gets pushed into **ECR repository** that triggers *Codedeploy* stage where the yaml manifest files run on **fargate-ecs cluster** that pulls the image from *ECR repo* and publishes it to web via using loadbalancer as a service.
 

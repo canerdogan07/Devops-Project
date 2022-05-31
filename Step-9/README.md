@@ -1,6 +1,6 @@
-##This projects aim is to deploy yaml files on EKS cluster.
+## This projects aim is to deploy yaml files on EKS cluster.
 
-###Learn concepts;
+### Learn concepts;
 
 -Namespace,
 -Replicasets,

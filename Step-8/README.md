@@ -1,4 +1,4 @@
-##This projects aim is to spin up an EKS cluster which is on public subnets(not recommended) on AWS using terraform.
+## This projects aim is to spin up an EKS cluster which is on public subnets(not recommended) on AWS using terraform.
 
 -We do spin up EKS cluster first and then worker nodes. 
 
