@@ -1,4 +1,4 @@
 ## My Devops Project
 - This would be a step by step devops project
 
-![random photos](https://picsum.photos/200/300)
+![random photos](https://picsum.photos/seed/picsum/200/300)
