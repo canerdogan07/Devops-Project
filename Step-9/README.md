@@ -2,10 +2,10 @@
 
 ### Learn concepts;
 
--Namespace,
--Replicasets,
--Deployment,
--Loadbalancers
+- Namespace,
+- Replicasets,
+- Deployment,
+- Loadbalancers
 ---
 ### Create a **jump host** in case you want to SSH to the worker nodes(which is not preffered) or can be used as *jenkins* instace as well.
 ---
